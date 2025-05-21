@@ -12,13 +12,25 @@ df_candidates
 df_comps
 df_appraisals
 
-🧹 Data Preprocessing
+Data Preprocessing
 All relevant numeric fields are cleaned and parsed (e.g., square footage, price). For each subject–candidate pair, we compute core features:
 Difference in gross living area (GLA)
 Age difference
 Lot size difference
 Price difference
 Haversine distance
+import numpy as np
+
+def haversine(lat1, lon1, lat2, lon2):
+    R = 6371  # Earth's radius in kilometers
+    phi1, phi2 = np.radians(lat1), np.radians(lat2)
+    d_phi = np.radians(lat2 - lat1)
+    d_lambda = np.radians(lon2 - lon1)
+    
+    a = np.sin(d_phi / 2)**2 + np.cos(phi1) * np.cos(phi2) * np.sin(d_lambda / 2)**2
+    c = 2 * np.arcsin(np.sqrt(a))
+    
+    return R * c
 
 Structure type match (binary)
 Bedroom count match (binary)

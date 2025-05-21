@@ -21,16 +21,33 @@ Price difference
 Haversine distance
 import numpy as np
 
-def haversine(lat1, lon1, lat2, lon2):
-    R = 6371  # Earth's radius in kilometers
-    phi1, phi2 = np.radians(lat1), np.radians(lat2)
-    d_phi = np.radians(lat2 - lat1)
-    d_lambda = np.radians(lon2 - lon1)
-    
-    a = np.sin(d_phi / 2)**2 + np.cos(phi1) * np.cos(phi2) * np.sin(d_lambda / 2)**2
-    c = 2 * np.arcsin(np.sqrt(a))
-    
-    return R * c
+##  Haversine Distance Formula
+
+The Haversine formula is used to calculate the great-circle distance between two points on the Earth's surface given their latitudes and longitudes:
+
+Where:
+
+- `R` is the Earth's radius (≈ 6371 km)
+- `φ₁`, `φ₂` are latitudes in radians
+- `Δφ` is the difference in latitude: `φ₂ - φ₁`
+- `Δλ` is the difference in longitude: `λ₂ - λ₁`
+
+This formula accounts for the curvature of the Earth and was used to compute the geographic similarity between the subject and candidate properties.
+
+## Haversine Distance Formula
+
+$$
+\text{distance} = 2R \cdot \arcsin\left( \sqrt{ \sin^2\left(\frac{\Delta \phi}{2}\right) + \cos(\phi_1) \cdot \cos(\phi_2) \cdot \sin^2\left(\frac{\Delta \lambda}{2}\right) } \right)
+$$
+
+Where:
+
+- \( R \): Earth’s radius (~6371 km)  
+- \( \phi_1, \phi_2 \): Latitudes in radians  
+- \( \Delta \phi = \phi_2 - \phi_1 \), \( \Delta \lambda = \lambda_2 - \lambda_1 \)
+
+
+
 
 Structure type match (binary)
 Bedroom count match (binary)
